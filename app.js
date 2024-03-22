@@ -1,31 +1,63 @@
-// how to upload a file using the formidable module
-const formidable = require("formidable");
-const http = require("http");
-const fs = require("fs");
+var nodemailer = require("nodemailer");
 
-http
-  .createServer(function (req, res) {
-    if (req == "./ramadan-data.txt") {
-      const form = new formidable.IncomingForm();
-      form.parse(req, function (err, fields, files) {
-        const oldpath = files.filetoupload.filepath;
-        const newpath =
-          "C:/Users/ramadan/" + files.filetoupload.originalFilename;
-        res.write("file uploaded");
-        res.end();
-      });
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "youremail@gmail.com",
+    pass: "yourpassword",
+  },
+});
+
+var mailOptions = {
+  from: "youremail@gmail.com",
+  to: "myfriend@yahoo.com",
+  subject: "Sending Email using Node.js",
+  text: "That was easy!",
+};
+
+transporter
+  .sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
     } else {
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.write(
-        '<form action="fileupload" method="post" enctype="multipart/form-data">'
-      );
-      res.write('<input type="file" name="filetoupload"><br>');
-      res.write('<input type="submit">');
-      res.write("</form>");
-      return res.end();
+      console.log("Email sent: " + info.response);
     }
   })
   .listen(8000);
+
+// how to upload a file using the formidable module
+// const formidable = require("formidable");
+// const http = require("http");
+// const fs = require("fs");
+
+// http
+//   .createServer(function (req, res) {
+//     if (req == "./ramadan-data.txt") {
+//       const form = new formidable.IncomingForm();
+//       form.parse(req, function (err, fields, files) {
+//         const oldpath = files.ramadan - data.txt.filepath;
+//         const newpath = "C:/Users/ramadan/" + files.ramadan - data.new;
+//         fs.rename(oldpath, newpath, function (err) {
+//           if (err) throw err;
+//           res.write("file upload and moved");
+//           res.end();
+//         });
+
+//         res.write("file uploaded");
+//         res.end();
+//       });
+//     } else {
+//       res.writeHead(200, { "Content-Type": "text/html" });
+//       res.write(
+//         '<form action="fileupload" method="post" enctype="multipart/form-data">'
+//       );
+//       res.write('<input type="file" name="filetoupload"><br>');
+//       res.write('<input type="submit">');
+//       res.write("</form>");
+//       return res.end();
+//     }
+//   })
+//   .listen(8000);
 // end
 
 /// format for the uploading of files
