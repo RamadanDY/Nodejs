@@ -4,13 +4,17 @@
 
 const EventsEmitter = require("events");
 const emitter = new EventsEmitter();
-/// emit signals that an event has happend ( ) we pass an argument inside
-emitter.emit();
+///// registering a listener this adds a listener to it and takes two arg name of the event and a callback function
+emitter.on("messageLogged", function () {
+  console.log("listener called");
+});
+/// emit signals that an event has happend ( ) we pass an argument inside which is the name of the event and we hv to attach a listener to the name placed as an arg
+emitter.emit("messageLogged");
 
 ///// understanding the file systems and working in files in node
-const fs = require("fs");
-const files = fs.readdirSync("./");
-console.log(files);
+// const fs = require("fs");
+// const files = fs.readdirSync("./");
+// console.log(files);
 
 // checking the total memory space and the space left
 // const os = require("os");
