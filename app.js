@@ -1,6 +1,50 @@
 // how to upload a file using the formidable module
+const formidable = require("formidable");
+const http = require("http");
+const fs = require("fs");
 
+http
+  .createServer(function (req, res) {
+    if (req == "./ramadan-data.txt") {
+      const form = new formidable.IncomingForm();
+      form.parse(req, function (err, fields, files) {
+        const oldpath = files.filetoupload.filepath;
+        const newpath =
+          "C:/Users/ramadan/" + files.filetoupload.originalFilename;
+        res.write("file uploaded");
+        res.end();
+      });
+    } else {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(
+        '<form action="fileupload" method="post" enctype="multipart/form-data">'
+      );
+      res.write('<input type="file" name="filetoupload"><br>');
+      res.write('<input type="submit">');
+      res.write("</form>");
+      return res.end();
+    }
+  })
+  .listen(8000);
 // end
+
+/// format for the uploading of files
+// this creats the input form
+// const formidable = require("formidable");
+// const http = require("http");
+
+// http
+//   .createServer(function (req, res) {
+//     res.writeHead(200, { "Content-Type": "text/html" });
+//     res.write(
+//       '<form action="fileupload" method="post" enctype="multipart/form-data">'
+//     );
+//     res.write('<input type="file" name="filetoupload"><br>');
+//     res.write('<input type="submit">');
+//     res.write("</form>");
+//     return res.end();
+//   })
+//   .listen(8000);
 
 ///// this nodejs outputs the content of the file that has been created and
 // outputs 404 ... if the requested server is not found
