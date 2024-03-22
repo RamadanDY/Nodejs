@@ -1,3 +1,12 @@
+/// events in modules
+//// the EventsEmitter shows that this is no more a function but in this case its a class
+// so we now need to create an instance of that class ie new EventEmiter() this makes it become an object that we will be using throughout the code
+
+const EventsEmitter = require("events");
+const emitter = new EventsEmitter();
+/// emit signals that an event has happend ( ) we pass an argument inside
+emitter.emit();
+
 ///// understanding the file systems and working in files in node
 const fs = require("fs");
 const files = fs.readdirSync("./");
