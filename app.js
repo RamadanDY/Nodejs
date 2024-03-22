@@ -1,10 +1,15 @@
+///// understanding the file systems and working in files in node
+const fs = require("fs");
+const files = fs.readdirSync("./");
+console.log(files);
+
 // checking the total memory space and the space left
-const os = require("os");
-const totalmem = os.totalmem();
-const freememory = os.freemem();
-// console.log("total memory:" + totalmem);
-console.log(`total memory + ${totalmem}`);
-console.log(`freespace + ${freememory}`);
+// const os = require("os");
+// const totalmem = os.totalmem();
+// const freememory = os.freemem();
+// // console.log("total memory:" + totalmem);
+// console.log(`total memory + ${totalmem}`);
+// console.log(`freespace + ${freememory}`);
 
 //// modules with mosh
 // using the path module to tell u the path of the file is being stored in
