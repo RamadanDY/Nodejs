@@ -1,17 +1,17 @@
-/// checking the total memory space and the space left
-// const os = require("os");
-// const totalmem = os.totalmem();
-// const freememory = os.freemem();
-// // console.log("total memory:" + totalmem);
-// console.log(`total memory + ${totalmem}`);
-// console.log(`freespace + ${freememory}`);
+// checking the total memory space and the space left
+const os = require("os");
+const totalmem = os.totalmem();
+const freememory = os.freemem();
+// console.log("total memory:" + totalmem);
+console.log(`total memory + ${totalmem}`);
+console.log(`freespace + ${freememory}`);
 
 //// modules with mosh
 // using the path module to tell u the path of the file is being stored in
 
-const path = require("path");
-const pathobject = path.parse(__filename);
-console.log(pathobject);
+// const path = require("path");
+// const pathobject = path.parse(__filename);
+// console.log(pathobject);
 
 // var nodemailer = require("nodemailer");
 
