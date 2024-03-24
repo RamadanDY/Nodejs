@@ -1,10 +1,12 @@
 const express = require("express");
 /// the express is a function so we now we want it to give us an  obj so as  to give us all the functionalities and features that the obj name (app) can give me
 const app = express();
+//the next() included prevents it from sending a res to the next middleware but fowards the req to the middleware next inline
 /// this middleware does smt to the post request that has been recieved the code runs this first before the one below
 // we can parse our request body inside
 app.use((req, res, next) => {
   let body = "";
+  // this executes when we are done parsing our data
   req.on("end", () => {
     const username = body.split("=")[1];
     if (username) {
@@ -12,12 +14,14 @@ app.use((req, res, next) => {
     }
     next();
   });
+  //parse the req body //chunks of data and also append the data here
   req.on("data", (chunk) => {
     body += chunk;
   });
 });
-
+/// the middleware the next() is what we call if we dont want to send a respond to this middleware but we want to send it the next middleware inline
 app.use((req, res, next) => {
+  //we now ant to check if request body is available
   if (req.body) {
     return res.send("<h1>" + req.body.name + "</h1>");
   }
