@@ -4,7 +4,7 @@ var app = express();
 app.get("/hello", function (req, res) {
   res.send("Hello World!");
 });
-app.get("/hello", function (req, res) {
+app.get("/hell", function (req, res) {
   res.send("go gerri");
 });
 app.all("*", (req, res, next) => {
