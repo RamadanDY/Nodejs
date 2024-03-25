@@ -7,6 +7,7 @@ const username = "ramadan";
 fs.writeFile("thenewface.txt", "Ramadan:" + username, function (req, res) {
   if (err) {
     console.log("err");
+    return;
   } else {
     console.log("wrote file");
   }
