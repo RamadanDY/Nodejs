@@ -25,6 +25,7 @@ app.use((req, res, next) => {
   if (req.body) {
     return res.send("<h1>" + req.body.name + "</h1>");
   }
+  /// in express we use send instead of write
   res.send(
     "<form  method='POST'><input type='text' placeholder='enter' name='username'><button type='submit'>Create User</button></form>"
   );

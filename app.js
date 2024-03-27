@@ -24,22 +24,22 @@
 // console.log(`total memory + ${totalmem}`);
 // console.log(`freespace + ${freememory}`);
 
-//// modules with mosh
-// using the path module to tell u the path of the file is being stored in
+// modules with mosh
+using the path module to tell u the path of the file is being stored in
 
-// const path = require("path");
-// const pathobject = path.parse(__filename);
-// console.log(pathobject);
+const path = require("path");
+const pathobject = path.parse(__filename);
+console.log(pathobject);
 
-// var nodemailer = require("nodemailer");
+var nodemailer = require("nodemailer");
 
-// var transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: "youremail@gmail.com",
-//     pass: "yourpassword",
-//   },
-// });
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "youremail@gmail.com",
+    pass: "yourpassword",
+  },
+});
 
 // var mailOptions = {
 //   from: "youremail@gmail.com",
